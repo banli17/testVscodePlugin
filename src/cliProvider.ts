@@ -3,7 +3,6 @@ import * as vscode from "vscode";
 import axios from "axios";
 import { CliItemOptions } from "./types";
 
-// todo 内容列表
 export class CliProvider implements vscode.TreeDataProvider<Object> {
   type: string;
 
@@ -23,7 +22,10 @@ export class CliProvider implements vscode.TreeDataProvider<Object> {
   async getData() {
     this.data = null;
     try {
-      const res = await axios.get("http://127.0.0.1:8081/1.json");
+      const res = await axios.get(
+        "https://raw.githubusercontent.com/banli17/testVscodePlugin/master/t_server/1.json"
+      );
+      //http://127.0.0.1:8081/1.json
       this.data = res.data;
     } catch (e) {
       this.data = [];
