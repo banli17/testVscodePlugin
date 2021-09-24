@@ -5,9 +5,11 @@ export class CliView {
   todoProvicer: CliProvider;
 
   constructor(context: vscode.ExtensionContext) {
-    vscode.commands.registerCommand("cliView.refresh", () => this.refresh());
-    vscode.commands.registerCommand("cliView.add", () => this.add());
-    vscode.commands.registerCommand("cliView.edit", () => this.edit());
+    context.subscriptions.push(
+      vscode.commands.registerCommand("cliView.refresh", () => this.refresh()),
+      vscode.commands.registerCommand("cliView.add", () => this.add()),
+      vscode.commands.registerCommand("cliView.edit", () => this.edit())
+    );
 
     this.todoProvicer = new CliProvider("all");
     vscode.window.registerTreeDataProvider("cliList", this.todoProvicer);

@@ -31,6 +31,9 @@
   "icon": "images/icon.png"
 ```
 
+命令是否需要使用 subscriptions?
+https://stackoverflow.com/questions/55554018/purpose-for-subscribing-a-command-in-vscode-extension
+
 ### 添加 tree
 
 1. viewsContainers

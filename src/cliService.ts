@@ -4,8 +4,10 @@ import { CliItemOptions } from "./types";
 
 export class CliService {
   constructor(context: vscode.ExtensionContext) {
-    vscode.commands.registerCommand("cliService.createProject", (e) =>
-      this.createProject(e)
+    context.subscriptions.push(
+      vscode.commands.registerCommand("cliService.createProject", (e) =>
+        this.createProject(e)
+      )
     );
   }
 
@@ -17,8 +19,19 @@ export class CliService {
     });
     if (selectDir && selectDir[0]) {
       try {
-        execSync(`git clone ${e.url} ${selectDir[0].fsPath}`); // 克隆仓库
-        vscode.window.showInformationMessage("创建完成");
+        vscode.window.showInformationMessage("开始下载");
+        await vscode.window.withProgress(
+          {
+            title: "正在下载中...",
+            location: vscode.ProgressLocation.Notification,
+          },
+          async (progress) => {
+            // progress.report('进度 0')
+            execSync(`git clone ${e.url} ${selectDir[0].fsPath}`); // 克隆仓库
+            // progress.report('进度 100')
+            vscode.window.showInformationMessage("下载完成");
+          }
+        );
 
         let pickResult: vscode.QuickPickItem | undefined;
 
