@@ -1,0 +1,28 @@
+[
+  {
+    "id": "id-111",
+    "label": "cli-1",
+    "version": "0.0.1",
+    "url": "https://git.uino.com/uino-3dapplication/component/component-core-template.git"
+  },
+  {
+    "id": "id-222",
+    "label": "cli-2",
+    "version": "0.0.2",
+    "url": "https://git.uino.com/uino-3dapplication/blueprint-pro.git"
+  },
+  {
+    "id": "id-333",
+    "label": "cli-3",
+    "version": "0.0.2",
+    "url": "https://git.uino.com/uino-3dapplication/blueprint-pro.git",
+    "children": [
+      {
+        "id": "id-333-1",
+        "label": "cli-3-1",
+        "version": "0.0.1",
+        "url": "https://git.uino.com/uino-3dapplication/blueprint-pro.git"
+      }
+    ]
+  }
+]

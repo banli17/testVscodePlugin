@@ -1,5 +1,9 @@
 # vscode 插件开发
 
+## 目的
+
+构建、运行、调试、测试和发布扩展
+
 ## 简介
 
 1. 注册激活事件
@@ -26,6 +30,21 @@
   },
   "icon": "images/icon.png"
 ```
+
+### 添加 tree
+
+1. viewsContainers
+2. views
+
+![](imgs/2021-09-23-10-50-20.png)
+
+1. 添加按钮
+
+![](imgs/2021-09-23-11-04-51.png)
+
+![](imgs/2021-09-23-15-09-13.png)
+
+## 右键菜单
 
 ## extension.ts
 
@@ -77,10 +96,13 @@ https://docs.microsoft.com/zh-cn/azure/devops/organizations/accounts/create-orga
 https://dev.azure.com/banli17
 右上角头像点击 user setting -> Personal Access Tokens
 
-2hpp5kotrb6rkgvpunql56jezckckmyq7cbelrgydcftvqqm6azq
-
 ![](imgs/2021-09-22-17-48-29.png)
 
 TestPluginHyh
 
 2sljjs2exvbwd2ivpvycbn4g6fhplf66ev2zni7btcyz43efc66a
+
+## 资料
+
+- 文档: https://code.visualstudio.com/api
+- 实例: https://github.com/microsoft/vscode-extension-samples

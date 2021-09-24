@@ -11,28 +11,110 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:testpluginhyh.vv",
-    "onCommand:testpluginhyh.gg",
-    "onView:nodeDependencies"
+    "onCommand:cliService",
+    "onCommand:cliView",
+    "onCommand:cliView.add",
+    "onView:cliList"
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "viewsWelcome": [
+      {
+        "view": "nodeDependencies",
+        "contents": "欢迎, 这里没内容 .\n[点击刷新](command:cliView.refresh)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "package-explorer",
+          "title": "简单创建项目",
+          "icon": "images/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "package-explorer": [
+        {
+          "id": "cliList",
+          "name": "脚手架列表",
+          "icon": "images/icon.svg"
+        }
+      ]
+    },
     "commands": [
       {
-        "command": "testpluginhyh.vv",
-        "title": "vvv"
+        "command": "cliView.refresh",
+        "title": "Refresh",
+        "icon": {
+          "light": "resources/light/refresh.svg",
+          "dark": "resources/dark/refresh.svg"
+        }
       },
       {
-        "command": "testpluginhyh.gg",
-        "title": "ggg"
+        "command": "cliView.add",
+        "title": "新增"
+      },
+      {
+        "command": "cliView.edit",
+        "title": "编辑"
+      },
+      {
+        "command": "cliService.createProject",
+        "title": "创建",
+        "icon": {
+          "light": "resources/light/boolean.svg",
+          "dark": "resources/dark/boolean.svg"
+        }
+      }
+    ],
+    "submenus": [
+      {
+        "id": "subMenuId",
+        "label": "子菜单",
+        "icon": "$(something)"
       }
     ],
     "menus": {
+      "subMenuId": [
+        {
+          "command": "cliView.add",
+          "when": "editorFocus",
+          "group": "navigation"
+        },
+        {
+          "command": "cliView.edit",
+          "when": "editorFocus",
+          "group": "navigation"
+        }
+      ],
       "editor/context": [
         {
+          "submenu": "subMenuId",
           "when": "editorFocus",
-          "command": "testpluginhyh.gg",
+          "group": "inline"
+        },
+        {
+          "command": "cliView.add",
+          "when": "editorFocus",
+          "group": "inline"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "cliView.refresh",
           "group": "navigation"
+        },
+        {
+          "command": "cliView.add",
+          "when": "view == cliList"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "cliService.createProject",
+          "when": "viewItem == no",
+          "group": "inline"
         }
       ]
     }
@@ -46,13 +128,14 @@
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/vscode": "^1.60.0",
+    "@types/download": "^8.0.1",
     "@types/glob": "^7.1.3",
     "@types/mocha": "^8.2.2",
     "@types/node": "14.x",
-    "eslint": "^7.27.0",
+    "@types/vscode": "^1.60.0",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",
+    "eslint": "^7.27.0",
     "glob": "^7.1.7",
     "mocha": "^8.4.0",
     "typescript": "^4.3.2",
@@ -62,5 +145,10 @@
     "type": "git",
     "url": "https://github.com/banli17/testVscodePlugin.git"
   },
-  "icon": "images/icon.png"
+  "icon": "images/icon.png",
+  "dependencies": {
+    "axios": "^0.21.4",
+    "download": "^8.0.0",
+    "download-git-repo": "^3.0.2"
+  }
 }
