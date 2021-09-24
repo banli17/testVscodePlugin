@@ -2,7 +2,7 @@
   "name": "testpluginhyh",
   "displayName": "TestPluginHyh",
   "description": "test",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "engines": {
     "vscode": "^1.60.0"
   },
